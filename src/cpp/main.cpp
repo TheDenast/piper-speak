@@ -247,6 +247,7 @@ int main(int argc, char *argv[]) {
     textinput.open("input.txt"); // Open input.txt
     getline(textinput, line);
     if (line != linechange) { // Only synthesize if file contents change
+      spdlog::info("New input detected, synthesizing...");
       linechange = line;
       // Evetything below is piper magic
       auto outputType = runConfig.outputType;
@@ -366,9 +367,11 @@ int main(int argc, char *argv[]) {
         rawOutputThread.join();
       }
 
-      spdlog::info("Real-time factor: {} (infer={} sec, audio={} sec)",
-                   result.realTimeFactor, result.inferSeconds,
-                   result.audioSeconds);
+      spdlog::info("Finished synthesizing");
+
+      // spdlog::info("Real-time factor: {} (infer={} sec, audio={} sec)",
+      //              result.realTimeFactor, result.inferSeconds,
+      //              result.audioSeconds);
 
       // Restore config (--json-input)
       voice.synthesisConfig.speakerId = speakerId;
