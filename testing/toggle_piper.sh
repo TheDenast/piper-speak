@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd /home/pi/capstone/piper-speak/testing
+
 if pgrep -x piper >/dev/null; then
 	echo "Found piper! Stopping..."
 	pkill -INT piper
