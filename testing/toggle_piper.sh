@@ -2,6 +2,8 @@
 
 cd /home/pi/capstone/piper-speak/testing
 
+echo "" >input.txt
+
 if pgrep -x piper >/dev/null; then
 	echo "Found piper! Stopping..."
 	pkill -INT piper
